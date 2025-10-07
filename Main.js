@@ -24,3 +24,4 @@ let calculation = new Calculation(athletes);
 console.log(calculation.getThreeNotes());
 console.log(calculation.calculationNotes());
 
+

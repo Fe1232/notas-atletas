@@ -41,13 +41,34 @@ class Calculation {
     }
 
     calculationNotes(){
-        let soma = 0;
-        for(let i = 0; i < this.athletes.length; i++){
-            const number = this.athletes[i].notas;
-            soma += number;
-        }
-        return soma;
+        let sums =  this.athletes.map(function (athlete) {
+            return athlete.notas.reduce(function(total, nota){
+                total += nota;
+                return total
+            })
+        });
+        let mediums = sums.map(function (sum){
+            return sum / 3;
+        });
+        let endResults = this.athletes.flatMap(function (athlete, index){
+            return  {nome: athlete.nome,
+                        media: mediums[index]
+                };
+        });
+        return endResults;
     }
+
+    /*result(){
+        let names = this.athletes.map(function (athlete){
+            mediums.map(function ( medium){
+                return {nome: athlete.nome,
+                        média: medium 
+                };
+            })
+        });
+        
+        return results;
+    }*/
 
 }
 module.exports = Calculation;
